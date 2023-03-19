@@ -252,7 +252,7 @@ def playHand(hand, wordList, n):
         # Ask user for input
         word=input('Enter word, or a "." to indicate that you are finished: ')        
         # If the input is a single period:
-        if word == '.' or word == '':
+        if word == '.' or word == None:
             print('Goodbye! Total score:', totalScore, 'points.')
             break
             # End the game (break out of the loop)

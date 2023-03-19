@@ -127,16 +127,59 @@ def playGame(wordList):
     wordList: list (string)
     """
     # TO DO... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this when you code this function
-
+     # <-- Remove this when you code this function
+   
+    lastHand=None 
+    isPlayerChoosed=False
+    isFirst=True
+    dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+    while dealOption == 'r' and isFirst:
+        print('You have not played a hand yet. Please play a new hand first!')
+        dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+        if dealOption != 'r':
+            isFirst = False
+            break
+    if dealOption == 'e':
+        # End the game (break out of the loop)
+        return None 
+    
+    while dealOption not in ['n','r','e']:             
+        print('Invalid command.')
+        dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+    
+    while not isPlayerChoosed:            
+        player=input('Enter u to have yourself play, c to have the computer play: ')
+        print()
+        if player not in ['u','c']:
+            player
+        else:
+            isPlayerChoosed=True
         
-#
+        isPlayerChoosed=False
+        while dealOption != 'e':
+            if dealOption == 'n':
+                lastHand=dealHand(HAND_SIZE)   
+                if player == 'u':
+                    playHand(lastHand, wordList, HAND_SIZE)
+                    dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+                    break
+                else:
+                    compPlayHand(lastHand, wordList, HAND_SIZE)
+                    dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+                    break
+            if dealOption=='r':
+                if player == 'u':
+                    playHand(lastHand, wordList, HAND_SIZE)
+                    dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+                    break
+                else:
+                    compPlayHand(lastHand, wordList, HAND_SIZE)
+                    dealOption=input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+                    break
 # Build data structures used for entire session and play game
 #
 if __name__ == '__main__':
-    wordList = loadWords()
-    print(wordList[134])
-    print(compChooseWord({'a': 1, 'p': 2, 's': 1, 'e': 1, 'l': 1}, wordList, 6))
+    wordList = loadWords()   
     playGame(wordList)
     
 
