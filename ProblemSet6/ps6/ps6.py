@@ -97,7 +97,7 @@ class Message(object):
         upperValues = list(string.ascii_uppercase)
         shifted_upperValues = upperValues[shift:] + upperValues[:shift]
         
-        self.build_shift_dict = {}
+        self.shift_dict = {}
         
         dictKeys = lowerLetters + upperLetters
         dictValues = shifted_lowerValues + shifted_upperValues
@@ -217,8 +217,27 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
+        word_count = 0
+        max_count = 0
         
-
+        for s in range(26):
+            for word in list(self.apply_shift(s).split(' ')):
+                if is_word(self.valid_words, word):
+                    word_count += 1
+                    if word_count > max_count:
+                        max_count = word_count
+                        shift = s
+                        decrypted_msg = self.apply_shift(s)
+            word_count=0
+            
+                
+        return (shift,decrypted_msg)
+    
+def decrypt_story():
+    story = CiphertextMessage(get_story_string())
+    return story.decrypt_message()
+        
+print(decrypt_story())
 #Example test case (PlaintextMessage)
 plaintext = PlaintextMessage('hello', 2)
 print(plaintext.build_shift_dict(2))
