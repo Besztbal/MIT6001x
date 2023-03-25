@@ -4,6 +4,7 @@ Created on Tue May 10 08:18:02 2016
 
 @author: WELG
 """
+import numpy as np
 
 class Coordinate(object):
     def __init__(self, x, y):
@@ -17,7 +18,21 @@ class Coordinate(object):
         return "<" + str(self.x) + "," + str(self.y) + ">"
     def __sub__(self, other):
         return Coordinate(self.x - other.x, self.y - other.y)
+    def __add__(self,other):
+        return Coordinate(self.x+other.x,self.y+other.y)
         
 
 c = Coordinate(3,4)
 origin = Coordinate(0,0)
+
+b=Coordinate(8, 8)
+
+distance= c.distance(b)
+print(np.round(distance,2))
+distance2=Coordinate.distance(b, c)
+print(distance2)
+print(Coordinate, type(Coordinate))
+
+print(isinstance(c,Coordinate))
+print(c+b)
+

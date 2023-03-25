@@ -20,3 +20,4 @@ test = [1,2,3,4]
 
 super = genSubsets(test)
 
+print(super)

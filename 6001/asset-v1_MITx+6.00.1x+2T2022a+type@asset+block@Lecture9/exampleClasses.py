@@ -22,7 +22,7 @@ class Animal(object):
 
 class Cat(Animal):
         def speak(self):
-            print("meow”)
+            print("meow")
         def __str__(self):
             return "cat:"+str(self.name)+":"+str(self.age)
 
@@ -37,7 +37,7 @@ class Person(Animal):
         if fname not in self.friends:
             self.friends.append(fname)
     def speak(self):
-        print("hello”)
+        print("hello")
     def age_diff(self, other):
         # alternate way: diff = self.age - other.age
         diff = self.get_age() - other.get_age()
@@ -59,13 +59,13 @@ class Student(Person):
     def speak(self):
         r = random.random()
         if r < 0.25:
-            print("i have homework”)
+            print("i have homework")
         elif 0.25 <= r < 0.5:
-            print("i need sleep”)
+            print("i need sleep")
         elif 0.5 <= r < 0.75:
-            print("i should eat”)
+            print("i should eat")
         else:
-            print("i am watching tv”)
+            print("i am watching tv")
     def __str__(self): 
         return "student:"+str(self.name)+":"+str(self.age)+":"+str(self.major)
 
@@ -77,3 +77,25 @@ class Rabbit(Animal):
         self.parent2 = parent2
         self.rid = Rabbit.tag
         Rabbit.tag += 1
+    def get_rid(self):
+        return str(self.rid).zfill(3)
+    def get_parent1(self):
+        return self.parent1
+    def get_parent2(self):
+        return self.parent2    
+    def __add__(self,other):
+        if isinstance(other, Rabbit):
+            # returning object of same type as this class
+            return Rabbit(0, self, other)
+        else:
+            raise Exception("Only rabbit allowed for parent")
+    def __eq__(self,other):
+        parents_same = self.parent1.get_rid() == other.parent1.get_rid() \
+            and self.parent2.rid ==other.parent1.rid
+        parents_opposite = self.parent2.rid == other.parent1.rid \
+            and self.parent1.rid == other.parent2.rid
+        return parents_same or parents_opposite
+    
+        
+
+

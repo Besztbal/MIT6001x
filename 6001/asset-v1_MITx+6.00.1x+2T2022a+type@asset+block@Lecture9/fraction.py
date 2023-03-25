@@ -27,3 +27,15 @@ class fraction(object):
         return fraction(numerNew, denomNew)
     def convert(self):
         return self.getNumer() / self.getDenom()
+    
+fraction1=fraction(3, 4)
+
+print(fraction1)
+
+fraction2=fraction(1, 2)
+
+addfrac=fraction1+fraction2
+
+print(addfrac)
+
+print(fraction.convert(fraction1))
