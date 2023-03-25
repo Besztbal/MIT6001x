@@ -11,4 +11,4 @@ UK = ['Cambridge', 'Oxford']
 Unis = [US, UK]
 Unisnew = [['MIT', 'Harvard', 'Yale'], ['US', 'UK']]
 
-# US.append('Princeton')
+US.append('Princeton')

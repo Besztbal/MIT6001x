@@ -7,3 +7,4 @@ Created on Thu Feb 16 23:29:33 2023
 
 s = 'I <3 cs'
 list(s)
+sList=list(s)
