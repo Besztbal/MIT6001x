@@ -76,23 +76,24 @@ class Student(Person):
     def __str__(self):
         return "student:"+str(self.name)+":"+str(self.age)+":"+str(self.major)
 
-jelly = Cat(1)
-jelly.set_name('Jelly')
-tiger = Cat(1)
-tiger.set_name('Tiger')
-bean = Cat(0)
-bean.set_name('Bean')
-print(jelly)
-jelly.speak()
-blob = Animal(1)
-peter = Rabbit(3)
-peter.speak()
+# jelly = Cat(1)
+# jelly.set_name('Jelly')
+# tiger = Cat(1)
+# tiger.set_name('Tiger')
+# bean = Cat(0)
+# bean.set_name('Bean')
+# print(jelly)
+# jelly.speak()
+# blob = Animal(1)
+# peter = Rabbit(3)
+# peter.speak()
 eric = Person('Eric', 45)
 eric.speak()
 john = Person('John', 55)
 eric.age_diff(john)
-
 fred = Student('Fred', 18, 'Course VI')
+friends=[]
+
 
 
 
