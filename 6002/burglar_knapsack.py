@@ -17,7 +17,7 @@ class Item(object):
     def get_Weight(self):
         return self.weight
     def __str__(self):
-        return f'<{self.name},          {self.value},      {self.weight}>'
+        return f'<{self.name}, {self.value}, {self.weight}>'
     
 def value(item):
     return item.get_Value()
@@ -57,7 +57,7 @@ def test_greedy(items, max_weight, key_function):
     taken, val = greedy(items, max_weight, key_function)
     print('Total value of items taken is', val)
     for item in taken:
-        print('    ', item)
+        print(' ', item)
     
     
 def test_greedys(max_weight = 20):
@@ -70,4 +70,39 @@ def test_greedys(max_weight = 20):
     test_greedy(items, max_weight, density)
     
 
-test_greedys()
+def powerSet(items):
+    N = len(items)
+    # enumerate the 2**N possible combinations
+    for i in range(2**N):
+        combo = []
+        for j in range(N):
+            # test bit jth of integer i
+            if (i >> j) % 2 == 1:
+                combo.append(items[j])
+        for item in combo:
+            print(' ',item)
+        yield combo
+        
+
+def yieldAllCombos(items):
+    """
+        Generates all combinations of N items into two bags, whereby each 
+        item is in one or zero bags.
+
+        Yields a tuple, (bag1, bag2), where each bag is represented as a list 
+        of which item(s) are in each bag.
+    """
+    N = len(items)    
+    for i in range(3**N):
+        bag1 = []
+        bag2 = []
+        for j in range(N):            
+            if (i//(3**j)) % 3 == 0:
+                bag1.append(items[j])
+            elif (i//(3**j)) % 3 == 1:
+                bag2.append(items[j])
+        for item in bag1:
+             print(' ',item)
+        for item in bag2:
+             print(' ',item)
+        yield (bag1,bag2)
